@@ -22,6 +22,14 @@ enum OverviewGroup: Int, CaseIterable, Hashable, Sendable {
     }
 }
 
+/// One group of the overview with its sorted items.
+struct OverviewSection: Identifiable, Hashable, Sendable {
+    var group: OverviewGroup
+    var items: [ItemData]
+
+    var id: OverviewGroup { group }
+}
+
 enum Urgency: Hashable, Sendable {
     case high
     case medium
@@ -66,7 +74,7 @@ enum OverviewRules {
 
     /// Non-empty groups in display order, each sorted by date (earliest first, missing
     /// dates last, then by name).
-    static func grouped(_ items: [ItemData], today: CalendarDay, now: Date, calendar: Calendar) -> [(group: OverviewGroup, items: [ItemData])] {
+    static func grouped(_ items: [ItemData], today: CalendarDay, now: Date, calendar: Calendar) -> [OverviewSection] {
         var buckets: [OverviewGroup: [(ItemData, CalendarDay?)]] = [:]
         for item in items {
             let group = group(for: item, today: today, now: now, calendar: calendar)
@@ -82,7 +90,7 @@ enum OverviewRules {
                 default: return lhs.0.name.localizedStandardCompare(rhs.0.name) == .orderedAscending
                 }
             }
-            return (group, sorted.map(\.0))
+            return OverviewSection(group: group, items: sorted.map(\.0))
         }
     }
 
