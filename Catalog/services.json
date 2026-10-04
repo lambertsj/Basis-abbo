@@ -1,0 +1,751 @@
+{
+  "version": 1,
+  "services": [
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "aliases": [],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "netflix.com"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "videoland",
+      "name": "Videoland",
+      "aliases": [],
+      "category": "streaming",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "videoland.com"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "aliases": [
+        "Disney Plus",
+        "Disney"
+      ],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "disneyplus.com"
+      ],
+      "appleBilling": true,
+      "popular": true
+    },
+    {
+      "id": "hbo-max",
+      "name": "HBO Max",
+      "aliases": [
+        "Max",
+        "HBO"
+      ],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "hbomax.com"
+      ],
+      "appleBilling": true,
+      "popular": true
+    },
+    {
+      "id": "prime-video",
+      "name": "Amazon Prime Video",
+      "aliases": [
+        "Prime Video",
+        "Amazon Prime",
+        "Prime"
+      ],
+      "category": "streaming",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "primevideo.com",
+        "amazon.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "apple-tv-plus",
+      "name": "Apple TV+",
+      "aliases": [
+        "Apple TV Plus",
+        "Apple TV"
+      ],
+      "category": "streaming",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "tv.apple.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "npo-plus",
+      "name": "NPO Plus",
+      "aliases": [
+        "NPO Start Plus",
+        "NPO"
+      ],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "npo.nl"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "viaplay",
+      "name": "Viaplay",
+      "aliases": [],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "viaplay.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "skyshowtime",
+      "name": "SkyShowtime",
+      "aliases": [
+        "Sky Showtime"
+      ],
+      "category": "streaming",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "skyshowtime.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "aliases": [
+        "YouTube",
+        "YT Premium"
+      ],
+      "category": "streaming",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "youtube.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "aliases": [
+        "Spotify Premium"
+      ],
+      "category": "music",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "spotify.com"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "aliases": [],
+      "category": "music",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "music.apple.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "deezer",
+      "name": "Deezer",
+      "aliases": [],
+      "category": "music",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "deezer.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "tidal",
+      "name": "TIDAL",
+      "aliases": [
+        "Tidal"
+      ],
+      "category": "music",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "tidal.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "amazon-music",
+      "name": "Amazon Music Unlimited",
+      "aliases": [
+        "Amazon Music"
+      ],
+      "category": "music",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "music.amazon.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "nrc",
+      "name": "NRC",
+      "aliases": [
+        "NRC Handelsblad",
+        "nrc.next"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "nrc.nl"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "volkskrant",
+      "name": "de Volkskrant",
+      "aliases": [
+        "Volkskrant",
+        "VK"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "volkskrant.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "telegraaf",
+      "name": "De Telegraaf",
+      "aliases": [
+        "Telegraaf"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "telegraaf.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "ad",
+      "name": "AD",
+      "aliases": [
+        "Algemeen Dagblad"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "ad.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "trouw",
+      "name": "Trouw",
+      "aliases": [],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "trouw.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "parool",
+      "name": "Het Parool",
+      "aliases": [
+        "Parool"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "parool.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "fd",
+      "name": "Het Financieele Dagblad",
+      "aliases": [
+        "FD",
+        "Financieele Dagblad"
+      ],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "fd.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "readly",
+      "name": "Readly",
+      "aliases": [],
+      "category": "news",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "readly.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "hellofresh",
+      "name": "HelloFresh",
+      "aliases": [
+        "Hello Fresh"
+      ],
+      "category": "mealbox",
+      "defaultKind": "trial",
+      "defaultInterval": "week",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "hellofresh.nl"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "marley-spoon",
+      "name": "Marley Spoon",
+      "aliases": [
+        "Marleyspoon"
+      ],
+      "category": "mealbox",
+      "defaultKind": "trial",
+      "defaultInterval": "week",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "marleyspoon.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "ekomenu",
+      "name": "Ekomenu",
+      "aliases": [],
+      "category": "mealbox",
+      "defaultKind": "trial",
+      "defaultInterval": "week",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "ekomenu.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "basic-fit",
+      "name": "Basic-Fit",
+      "aliases": [
+        "Basic Fit",
+        "Basicfit"
+      ],
+      "category": "gym",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "basic-fit.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "sportcity",
+      "name": "SportCity",
+      "aliases": [
+        "Sport City"
+      ],
+      "category": "gym",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "sportcity.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "fit-for-free",
+      "name": "Fit For Free",
+      "aliases": [
+        "FitForFree"
+      ],
+      "category": "gym",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "fitforfree.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "anytime-fitness",
+      "name": "Anytime Fitness",
+      "aliases": [],
+      "category": "gym",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "anytimefitness.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "urban-sports-club",
+      "name": "Urban Sports Club",
+      "aliases": [
+        "OneFit",
+        "Urban Sports"
+      ],
+      "category": "gym",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "urbansportsclub.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "icloud-plus",
+      "name": "iCloud+",
+      "aliases": [
+        "iCloud",
+        "iCloud Plus"
+      ],
+      "category": "storage",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "icloud.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "google-one",
+      "name": "Google One",
+      "aliases": [
+        "Google Drive",
+        "Google opslag"
+      ],
+      "category": "storage",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "one.google.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "aliases": [],
+      "category": "storage",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "dropbox.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "aliases": [
+        "Office 365",
+        "Office",
+        "OneDrive"
+      ],
+      "category": "software",
+      "defaultKind": "trial",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "microsoft.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "adobe-creative-cloud",
+      "name": "Adobe Creative Cloud",
+      "aliases": [
+        "Adobe",
+        "Photoshop",
+        "Lightroom"
+      ],
+      "category": "software",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "adobe.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "aliases": [
+        "ChatGPT",
+        "OpenAI"
+      ],
+      "category": "software",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "chatgpt.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "duolingo",
+      "name": "Duolingo Super",
+      "aliases": [
+        "Duolingo",
+        "Super Duolingo"
+      ],
+      "category": "software",
+      "defaultKind": "trial",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "duolingo.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "aliases": [
+        "One Password"
+      ],
+      "category": "software",
+      "defaultKind": "trial",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "1password.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "nordvpn",
+      "name": "NordVPN",
+      "aliases": [
+        "Nord VPN"
+      ],
+      "category": "software",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "nordvpn.com"
+      ],
+      "appleBilling": true,
+      "popular": false
+    },
+    {
+      "id": "storytel",
+      "name": "Storytel",
+      "aliases": [],
+      "category": "audiobooks",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "storytel.com"
+      ],
+      "appleBilling": false,
+      "popular": true
+    },
+    {
+      "id": "bookbeat",
+      "name": "BookBeat",
+      "aliases": [
+        "Book Beat"
+      ],
+      "category": "audiobooks",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "bookbeat.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "audible",
+      "name": "Audible",
+      "aliases": [],
+      "category": "audiobooks",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "audible.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "kobo-plus",
+      "name": "Kobo Plus",
+      "aliases": [
+        "Kobo",
+        "Rakuten Kobo"
+      ],
+      "category": "audiobooks",
+      "defaultKind": "trial",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "kobo.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    }
+  ]
+}
