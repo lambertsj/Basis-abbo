@@ -4,6 +4,7 @@ import OSLog
 import SwiftData
 import SwiftUI
 import UserNotifications
+import WidgetKit
 
 /// App-wide state and the actions that change items.
 ///
@@ -153,6 +154,25 @@ final class AppModel {
             ? OverviewRules.decideNowCount(data, today: today, now: now, calendar: calendar)
             : 0
         scheduler.setBadge(badge)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    /// After a change in Instellingen.
+    func settingsChanged() {
+        afterChange()
+    }
+
+    /// Alles wissen: all items, settings and pending notifications.
+    func eraseAll() {
+        // One by one, so every @Query sees the change right away.
+        for item in allItems() {
+            context.delete(item)
+        }
+        settings.reset()
+        toast = nil
+        path = []
+        sheet = nil
+        afterChange()
     }
 
     /// Applies a pure domain change to one item.
@@ -374,6 +394,10 @@ final class AppModel {
         await updateNotificationStatus()
         guard notificationStatus == .notDetermined else { return }
         try? await Task.sleep(nanoseconds: 500_000_000)
+        await requestAuthorization()
+    }
+
+    func requestAuthorization() async {
         _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
         await updateNotificationStatus()
         afterChange()

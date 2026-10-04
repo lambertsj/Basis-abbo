@@ -53,14 +53,3 @@ struct ItemRow: View {
         }
     }
 }
-
-extension Urgency {
-    /// Red, orange or secondary. Always shown together with text.
-    var color: Color {
-        switch self {
-        case .high: .red
-        case .medium: .orange
-        case .normal: .secondary
-        }
-    }
-}

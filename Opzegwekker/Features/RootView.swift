@@ -22,7 +22,7 @@ struct RootView: View {
         .sheet(item: $model.sheet) { sheet in
             switch sheet {
             case .settings:
-                Text("Instellingen")
+                SettingsView()
             case .add(let start):
                 AddFlowView(start: start)
             case .markCancelled(let id):
