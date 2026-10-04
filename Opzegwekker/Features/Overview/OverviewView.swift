@@ -10,6 +10,7 @@ struct OverviewView: View {
 
     var body: some View {
         content
+            .background(Color.paper)
             .navigationTitle("Opzegwekker")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -46,9 +47,10 @@ struct OverviewView: View {
 
         return List {
             if !total.isEmpty {
-                Section {
-                    totalRow(total)
-                }
+                totalRow(total)
+                    .listRowBackground(Color.paper)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 12, trailing: 20))
             }
 
             cards(data)
@@ -58,18 +60,25 @@ struct OverviewView: View {
                     if isExpanded(entry.group) {
                         ForEach(entry.items) { item in
                             row(for: item, today: today, now: now)
+                                .listRowBackground(Color.paper)
+                                .listRowSeparatorTint(Color.hairline)
+                                .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 16))
+                        }
+                        if entry.group == .stopped, !stoppedTotal.isEmpty {
+                            Text(stoppedTotal.stoppedText)
+                                .font(.serif(.subheadline).italic())
+                                .foregroundStyle(.secondary)
+                                .listRowBackground(Color.paper)
+                                .listRowSeparator(.hidden)
                         }
                     }
                 } header: {
                     header(for: entry.group, count: entry.items.count)
-                } footer: {
-                    if entry.group == .stopped, isExpanded(.stopped), !stoppedTotal.isEmpty {
-                        Text(stoppedTotal.stoppedText)
-                    }
                 }
             }
         }
-        .listStyle(.insetGrouped)
+        .listStyle(.plain)
+        .paperBackground()
         .animation(.default, value: expandedGroups)
     }
 
@@ -80,9 +89,11 @@ struct OverviewView: View {
             withAnimation { showsTotalExplanation.toggle() }
         } label: {
             VStack(alignment: .leading, spacing: 4) {
-                Text(total.activeText)
-                    .font(.title2.weight(.semibold))
-                    .foregroundStyle(.primary)
+                Text("± \(DutchFormat.euroRounded(cents: total.cents)) \(Text("per maand").font(.subheadline).foregroundStyle(.secondary))")
+                    .font(.serif(.largeTitle))
+                    .foregroundStyle(Color.ink)
+                    .monospacedDigit()
+                    .accessibilityLabel(total.activeText)
                 if showsTotalExplanation {
                     Text(total.explanation)
                         .font(.subheadline)
@@ -96,6 +107,17 @@ struct OverviewView: View {
 
     @ViewBuilder
     private func header(for group: OverviewGroup, count: Int) -> some View {
+        headerContent(for: group, count: count)
+            .padding(.horizontal, 4)
+            .padding(.top, 14)
+            .padding(.bottom, 4)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.paper)
+            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+    }
+
+    @ViewBuilder
+    private func headerContent(for group: OverviewGroup, count: Int) -> some View {
         if group.isCollapsedByDefault {
             Button {
                 if expandedGroups.contains(group) {
@@ -105,9 +127,11 @@ struct OverviewView: View {
                 }
             } label: {
                 HStack {
-                    Text("\(group.title) (\(count))")
+                    GroupLabel(title: group.title, count: count)
                     Spacer()
                     Image(systemName: "chevron.right")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
                         .rotationEffect(.degrees(isExpanded(group) ? 90 : 0))
                         .accessibilityHidden(true)
                 }
@@ -116,7 +140,8 @@ struct OverviewView: View {
             .buttonStyle(.plain)
             .accessibilityValue(isExpanded(group) ? "uitgeklapt" : "ingeklapt")
         } else {
-            Text(group.title)
+            GroupLabel(title: group.title, count: count)
+                .accessibilityAddTraits(.isHeader)
         }
     }
 
@@ -163,7 +188,7 @@ struct OverviewView: View {
         let showsDenied = model.notificationStatus == .denied && !model.settings.deniedCardDismissed
         let unconfirmed = data.filter { $0.needsConfirmation && $0.status == .active }
         if showsDenied || !unconfirmed.isEmpty {
-            Section {
+            Group {
                 if showsDenied {
                     NotificationsDeniedCard {
                         model.openNotificationSettings()
@@ -179,24 +204,35 @@ struct OverviewView: View {
                     }
                 }
             }
+            .listRowBackground(Color.paper)
+            .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
         }
     }
 }
 
-/// The floating add button in the thumb zone.
+/// The add button in the thumb zone, on a fade of the page so the list ends softly.
 struct AddButton: View {
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Label("Voeg toe", systemImage: "plus")
+                .labelStyle(.titleAndIcon)
                 .font(.headline)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 14)
+                .foregroundStyle(Color.paper)
+                .padding(.horizontal, 28)
+                .frame(minHeight: 52)
+                .background(Color.ink, in: Capsule())
+                .contentShape(Capsule())
         }
-        .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.capsule)
-        .shadow(color: .black.opacity(0.15), radius: 8, y: 3)
+        .buttonStyle(.plain)
+        .padding(.top, 20)
         .padding(.bottom, 8)
+        .frame(maxWidth: .infinity)
+        .background(
+            LinearGradient(colors: [Color.paper.opacity(0), Color.paper], startPoint: .top, endPoint: .center)
+                .allowsHitTesting(false)
+        )
     }
 }

@@ -25,9 +25,9 @@ struct NotificationsDeniedCard: View {
                 .accessibilityLabel("Verberg")
             }
             Button("Zet aan", action: onEnable)
-                .buttonStyle(.bordered)
+                .buttonStyle(ChipStyle(isSelected: true))
         }
-        .padding(.vertical, 4)
+        .cardStyle()
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button("Verberg", action: onDismiss)
         }
@@ -45,8 +45,8 @@ struct ConfirmationCard: View {
     let onAlreadyCancelled: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("\(name) loopt nu waarschijnlijk door. Klopt dat?")
+        VStack(alignment: .leading, spacing: 12) {
+            Text("\(Text(name).font(.serif(.body, weight: .semibold))) loopt nu waarschijnlijk door. Klopt dat?")
                 .fixedSize(horizontal: false, vertical: true)
             ViewThatFits(in: .horizontal) {
                 HStack {
@@ -57,14 +57,24 @@ struct ConfirmationCard: View {
                 }
             }
         }
-        .padding(.vertical, 4)
+        .cardStyle()
     }
 
     @ViewBuilder
     private var buttons: some View {
         Button("Klopt", action: onConfirm)
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(ChipStyle(isSelected: true))
         Button("Ik had al opgezegd", action: onAlreadyCancelled)
-            .buttonStyle(.bordered)
+            .buttonStyle(ChipStyle())
+    }
+}
+
+private extension View {
+    /// A card as a note on the page: raised paper with a hairline edge.
+    func cardStyle() -> some View {
+        padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.paperRaised, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(Color.hairline, lineWidth: 1))
     }
 }

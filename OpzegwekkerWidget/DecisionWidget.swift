@@ -8,6 +8,7 @@ struct DecisionEntry: TimelineEntry {
         var id: UUID
         var name: String
         var category: ServiceCategory
+        var daysLeft: Int
         var daysLeftText: String
         var urgency: Urgency
         var accessibilityLabel: String
@@ -25,6 +26,7 @@ struct DecisionProvider: TimelineProvider {
                 id: UUID(),
                 name: "Videoland",
                 category: .streaming,
+                daysLeft: 3,
                 daysLeftText: "nog 3 dagen",
                 urgency: .medium,
                 accessibilityLabel: "Videoland, nog 3 dagen"
@@ -78,6 +80,7 @@ struct DecisionProvider: TimelineProvider {
                     id: next.id,
                     name: next.name,
                     category: catalog.category(for: next.catalogID),
+                    daysLeft: texts.daysLeft ?? 0,
                     daysLeftText: texts.daysLeftText ?? "",
                     urgency: texts.urgency,
                     accessibilityLabel: texts.accessibilityLabel
@@ -103,12 +106,11 @@ struct DecisionWidgetView: View {
                     LetterIcon(name: item.name, category: item.category, size: 36)
                     Spacer(minLength: 4)
                     Text(item.name)
-                        .font(.headline)
+                        .font(.serif(.headline, weight: .semibold))
+                        .foregroundStyle(Color.ink)
                         .lineLimit(2)
                         .minimumScaleFactor(0.7)
-                    Text(item.daysLeftText)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(item.urgency.color)
+                    DaysLeftLabel(days: item.daysLeft, text: item.daysLeftText, urgency: item.urgency)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                 }
@@ -118,14 +120,14 @@ struct DecisionWidgetView: View {
                 .widgetURL(URL(string: "opzegwekker://item/\(item.id.uuidString)"))
             } else {
                 Text("Niets om over te beslissen")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.serif(.body))
+                    .foregroundStyle(Color.ink.opacity(0.7))
                     .minimumScaleFactor(0.7)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .widgetURL(URL(string: "opzegwekker://overview"))
             }
         }
-        .containerBackground(.fill.tertiary, for: .widget)
+        .containerBackground(Color.paper, for: .widget)
     }
 }
 

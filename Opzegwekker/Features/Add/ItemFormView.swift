@@ -48,6 +48,7 @@ struct ItemFormView: View {
         Form {
             Section {
                 TextField("Naam", text: $draft.name)
+                    .font(.serif(.title3, weight: .semibold))
                     .focused($focus, equals: .name)
                     .textInputAutocapitalization(.words)
                     .submitLabel(.done)
@@ -94,20 +95,16 @@ struct ItemFormView: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            Button {
+            Button("Bewaar") {
                 onSave(draft)
-            } label: {
-                Text("Bewaar")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
+            .buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .background(.bar)
+            .padding(.top, 8)
+            .padding(.bottom, 8)
+            .background(Color.paper)
         }
+        .paperBackground()
         .navigationTitle(isNew ? "Toevoegen" : "Bewerken")
         .navigationBarTitleDisplayMode(.inline)
         .task {

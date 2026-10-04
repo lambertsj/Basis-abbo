@@ -48,10 +48,11 @@ struct AddSearchView: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
-        .background(Color(.secondarySystemFill), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .background(Color.paperRaised, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Color.hairline, lineWidth: 1))
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(.bar)
+        .background(Color.paper)
     }
 
     private var popularGrid: some View {
@@ -78,6 +79,7 @@ struct AddSearchView: View {
             }
             .padding(16)
         }
+        .background(Color.paper)
     }
 
     private var results: some View {
@@ -89,7 +91,10 @@ struct AddSearchView: View {
                     onPick(nil, trimmedQuery)
                 } label: {
                     Label("‘\(trimmedQuery)’ toevoegen", systemImage: "plus")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(Color.ink)
                 }
+                .listRowBackground(Color.paper)
             }
             ForEach(matches) { service in
                 Button {
@@ -98,12 +103,15 @@ struct AddSearchView: View {
                     HStack(spacing: 12) {
                         LetterIcon(name: service.name, category: service.category, size: 32)
                         Text(service.name)
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(Color.ink)
                     }
                 }
+                .listRowBackground(Color.paper)
             }
         }
         .listStyle(.plain)
+        .paperBackground()
+        .listRowBackground(Color.paper)
     }
 
     /// Return picks the exact match, else the "+ … toevoegen" row.

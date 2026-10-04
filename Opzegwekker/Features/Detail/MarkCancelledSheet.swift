@@ -12,7 +12,7 @@ struct MarkCancelledSheet: View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Tot wanneer kun je het nog gebruiken?")
-                    .font(.title3.weight(.semibold))
+                    .font(.serif(.title2))
                     .fixedSize(horizontal: false, vertical: true)
                 DatePicker("Gebruiken tot", selection: $date, displayedComponents: .date)
                 Spacer(minLength: 0)
@@ -21,20 +21,19 @@ struct MarkCancelledSheet: View {
                     dismiss()
                 } label: {
                     Text("Bevestig")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 6)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+                .buttonStyle(PrimaryButtonStyle())
             }
             .padding(16)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .background(Color.paper)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Annuleer") { dismiss() }
                 }
             }
         }
+        .presentationBackground(Color.paper)
         .presentationDetents([.medium, .large])
         .onAppear {
             let day = model.defaultUsableUntil(for: itemID)

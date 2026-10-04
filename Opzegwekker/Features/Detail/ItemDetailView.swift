@@ -73,17 +73,21 @@ struct ItemDetailView: View {
                 infoRow("Opzeglink", value: item.cancelURL ?? "Geen", field: .cancelURL)
                 infoRow("Notitie", value: item.note.isEmpty ? "Geen" : item.note, field: .note)
             }
+            .listRowBackground(Color.paperRaised)
 
             Section {
                 Button("Bewerken") {
                     editRequest = EditRequest(field: nil)
                 }
+                .foregroundStyle(Color.ink)
                 Button("Verwijderen", role: .destructive) {
                     model.delete(item.id)
                 }
             }
+            .listRowBackground(Color.paperRaised)
         }
         .listStyle(.insetGrouped)
+        .paperBackground()
     }
 
     // MARK: - Header
@@ -93,17 +97,19 @@ struct ItemDetailView: View {
             HStack(spacing: 12) {
                 LetterIcon(name: item.name, category: category, size: 52)
                 Text(item.name)
-                    .font(.title3.weight(.semibold))
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Text(texts.headline)
-                .font(.largeTitle.weight(.bold))
+                .font(.serif(.largeTitle, weight: .semibold))
+                .foregroundStyle(Color.ink)
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityAddTraits(.isHeader)
             if let subline = texts.subline {
                 Text(subline)
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.ink.opacity(0.7))
             }
             if let note = texts.tooLateNote {
                 Label(note, systemImage: "exclamationmark.triangle")
@@ -128,8 +134,7 @@ struct ItemDetailView: View {
                     Text(hasCancelLink(item) ? "Opzeggen" : "Zoek opzegpagina")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+                .buttonStyle(PrimaryButtonStyle())
 
                 if appleBilling {
                     Button {
@@ -138,8 +143,7 @@ struct ItemDetailView: View {
                         Text("Betaald via Apple?")
                             .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
+                    .buttonStyle(SecondaryButtonStyle())
                 }
 
                 Button {
@@ -148,8 +152,7 @@ struct ItemDetailView: View {
                     Text("Houden")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
-                .controlSize(.large)
+                .buttonStyle(SecondaryButtonStyle())
 
             case .cancelled:
                 Button {
@@ -158,8 +161,7 @@ struct ItemDetailView: View {
                     Text("Toch niet opgezegd")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
-                .controlSize(.large)
+                .buttonStyle(SecondaryButtonStyle())
 
             case .stopped:
                 EmptyView()

@@ -34,8 +34,8 @@ struct ItemRow: View {
     private var labels: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(item.name)
-                .font(.body.weight(.medium))
-                .foregroundStyle(.primary)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Color.ink)
             Text(texts.subtitle)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -45,10 +45,8 @@ struct ItemRow: View {
 
     @ViewBuilder
     private var daysLeft: some View {
-        if let text = texts.daysLeftText {
-            Text(text)
-                .font(.subheadline.weight(texts.urgency == .normal ? .regular : .semibold))
-                .foregroundStyle(texts.urgency.color)
+        if let text = texts.daysLeftText, let days = texts.daysLeft {
+            DaysLeftLabel(days: days, text: text, urgency: texts.urgency)
                 .multilineTextAlignment(.trailing)
         }
     }

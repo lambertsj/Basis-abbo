@@ -93,3 +93,25 @@ Hier staan de keuzes die niet in de opdracht stonden. Waar de opdracht niets zei
 49. Er staan 44 diensten in, verdeeld over de acht gevraagde categorieën. `trialDays` en `cancelURL` staan overal op `null`.
 50. `appleBilling`, `defaultKind`, `defaultInterval` en `domains` heb ik ingevuld op basis van algemene kennis. Ze staan ook in `CATALOG_TODO.md` om na te lopen.
 51. De 8 populaire diensten zijn Netflix, Videoland, Disney+, HBO Max, Spotify, NRC, HelloFresh en Storytel.
+
+## Uiterlijk
+
+De eerste versie gebruikte overal de standaard SwiftUI-template: grijze gegroepeerde lijsten, blauwe en oranje knoppen, letter-iconen met een gradient en zwevende knoppen met schaduw en blur. Dat voelde als elke andere snel gegenereerde app. Daarom heeft de app nu een eigen, ingetogen stijl: **een agenda op papier**.
+
+52. **Papier en inkt.** De achtergrond is warm gebroken wit (`Paper`, donker: warm bijna-zwart) in plaats van systeemgrijs. Tekst en primaire knoppen zijn inkt (`Ink`), en `AccentColor` is ook inkt. Dit zijn asset-kleuren met een lichte en een donkere variant, in `Shared/UI/Theme.xcassets`, zodat ook de widget ze kent.
+53. **Kleur betekent iets.** Kleur komt alleen voor bij urgentie (rood, oranje) en bij de categorie van een item (letter-icoon), plus groen en rood in de swipe-acties. Er is verder geen merkaccent in de interface; het oranje van het app-icoon blijft op het beginscherm.
+54. **Serif voor wat ertoe doet.** New York, via `design: .serif` met Dynamic Type, voor:
+    - de app-titel en de navigatietitels (via `UINavigationBarAppearance`);
+    - het maandtotaal en de beslisdatum in het detail;
+    - de vraag in de lege staat en het getal in "nog 5 dagen".
+
+   De rest blijft SF Pro, zodat het een native iOS-app blijft.
+55. **Lijst op het papier.** Het overzicht is een platte lijst met haarlijnen in plaats van grijze kaarten. Groepen hebben kleine kapitalen met het aantal ("NU BESLISSEN · 2"). Het maandtotaal staat groot in serif bovenaan, met "per maand" klein ernaast.
+56. **Letter-iconen** zijn een zachte tint van de categoriekleur met de letter in die kleur, in serif, zonder gradient.
+57. **Knoppen.** Eén gevulde inktknop voor de hoofdactie (`PrimaryButtonStyle`), omlijnde knoppen voor de alternatieven (`SecondaryButtonStyle`) en omlijnde chips. Zo staan er nooit twee gekleurde knoppen naast elkaar die om aandacht vechten.
+58. **Geen schaduw of blur.**
+    - De Voeg toe-knop is een inktpil op een zachte overloop van het papier.
+    - De toast is een inktvlak met papierkleurige tekst.
+    - Kaarten zijn verhoogd papier met een haarlijn.
+59. **"nog 5 dagen"** toont het getal groot in serif. "vandaag" en "morgen" staan vet. Bij toegankelijkheidsgroottes is het gewoon tekst. Het blijft altijd tekst en wordt nooit alleen kleur.
+60. **Formulieren en Instellingen** houden de vertrouwde iOS-formulierrijen, op papieren achtergrond.

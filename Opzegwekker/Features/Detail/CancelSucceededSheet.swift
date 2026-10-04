@@ -18,7 +18,7 @@ struct CancelSucceededSheet: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("Is opzeggen van \(matches.first?.name ?? "dit abonnement") gelukt?")
-                .font(.title3.weight(.semibold))
+                .font(.serif(.title2))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 24)
@@ -28,23 +28,17 @@ struct CancelSucceededSheet: View {
                 dismiss()
             } label: {
                 Text("Ja, opgezegd")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
+            .buttonStyle(PrimaryButtonStyle())
             Button {
                 dismiss()
             } label: {
                 Text("Nog niet")
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 6)
             }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
+            .buttonStyle(SecondaryButtonStyle())
         }
         .padding(16)
+        .presentationBackground(Color.paper)
         .presentationDetents([.medium])
     }
 }

@@ -90,6 +90,7 @@ struct SettingsView: View {
                     }
                 }
             }
+            .paperBackground()
             .navigationTitle("Instellingen")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -114,6 +115,7 @@ struct SettingsView: View {
         .task {
             await model.updateNotificationStatus()
         }
+        .presentationBackground(Color.paper)
     }
 
     private var notificationsOn: Bool {

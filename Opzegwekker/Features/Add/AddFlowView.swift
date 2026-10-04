@@ -42,5 +42,6 @@ struct AddFlowView: View {
                 }
             }
         }
+        .presentationBackground(Color.paper)
     }
 }

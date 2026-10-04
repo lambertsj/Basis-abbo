@@ -15,10 +15,10 @@ struct ToastView: View {
             }
         }
         .font(.subheadline)
-        .padding(.horizontal, 18)
-        .padding(.vertical, 12)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .shadow(color: .black.opacity(0.15), radius: 8, y: 2)
+        .foregroundStyle(Color.paper)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
+        .background(Color.ink, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
         .accessibilityElement(children: .combine)
@@ -28,14 +28,18 @@ struct ToastView: View {
     @ViewBuilder
     private var content: some View {
         Text(toast.message)
-            .foregroundStyle(.primary)
             .fixedSize(horizontal: false, vertical: true)
         if toast.undo != nil {
             Text("·")
-                .foregroundStyle(.secondary)
+                .opacity(0.5)
                 .accessibilityHidden(true)
-            Button("Ongedaan maken", action: onUndo)
-                .fontWeight(.semibold)
+            Button(action: onUndo) {
+                Text("Ongedaan maken")
+                    .fontWeight(.semibold)
+                    .underline()
+                    .foregroundStyle(Color.paper)
+            }
+            .buttonStyle(.plain)
         }
     }
 }

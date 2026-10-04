@@ -6,11 +6,13 @@ struct EmptyStateView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 28) {
                 Text("Welke proefperiode wil je niet vergeten?")
-                    .font(.title2.weight(.semibold))
+                    .font(.serif(.largeTitle))
+                    .foregroundStyle(Color.ink)
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityAddTraits(.isHeader)
+                    .padding(.top, 24)
 
                 FlowLayout(spacing: 10) {
                     ForEach(model.catalog.popular) { service in
@@ -32,26 +34,9 @@ struct EmptyStateView: View {
                     .buttonStyle(ChipStyle())
                 }
             }
-            .padding(16)
+            .padding(.horizontal, 20)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-    }
-}
-
-/// A rounded, tinted chip.
-struct ChipStyle: ButtonStyle {
-    var isSelected = false
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.body)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 9)
-            .foregroundStyle(isSelected ? Color.white : Color.primary)
-            .background(
-                Capsule().fill(isSelected ? Color.accentColor : Color(.secondarySystemFill))
-            )
-            .opacity(configuration.isPressed ? 0.7 : 1)
-            .contentShape(Capsule())
+        .background(Color.paper)
     }
 }
