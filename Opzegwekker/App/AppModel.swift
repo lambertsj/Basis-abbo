@@ -111,9 +111,9 @@ final class AppModel {
         (try? context.fetch(FetchDescriptor<Item>())) ?? []
     }
 
-    func item(_ id: UUID) -> Item? {
+    func fetchItem(_ id: UUID) -> Item? {
         let target = id
-        var descriptor = FetchDescriptor<Item>(predicate: #Predicate { $0.id == target })
+        var descriptor = FetchDescriptor<Item>(predicate: #Predicate<Item> { $0.id == target })
         descriptor.fetchLimit = 1
         return try? context.fetch(descriptor).first
     }
@@ -177,7 +177,7 @@ final class AppModel {
 
     /// Applies a pure domain change to one item.
     func mutate(_ id: UUID, _ change: (inout ItemData) -> Void) {
-        guard let item = item(id) else { return }
+        guard let item = fetchItem(id) else { return }
         var data = item.data
         change(&data)
         item.apply(data)
@@ -188,7 +188,7 @@ final class AppModel {
     @discardableResult
     func save(_ draft: ItemDraft) -> UUID {
         let data = draft.build(today: today, now: now, calendar: calendar)
-        if let existing = item(data.id) {
+        if let existing = fetchItem(data.id) {
             existing.apply(data)
             afterChange()
             return data.id
@@ -210,7 +210,7 @@ final class AppModel {
 
     /// Deletes an item at once and offers to undo it from a full snapshot.
     func delete(_ id: UUID, showUndo: Bool = true) {
-        guard let item = item(id) else { return }
+        guard let item = fetchItem(id) else { return }
         let snapshot = item.data
         context.delete(item)
         path.removeAll { $0 == .item(id) }
@@ -222,7 +222,7 @@ final class AppModel {
     }
 
     func restore(_ snapshot: ItemData) {
-        guard item(snapshot.id) == nil else { return }
+        guard fetchItem(snapshot.id) == nil else { return }
         context.insert(Item(data: snapshot))
         afterChange()
     }
@@ -236,7 +236,7 @@ final class AppModel {
     }
 
     func defaultUsableUntil(for id: UUID) -> CalendarDay {
-        guard let item = item(id) else { return today }
+        guard let item = fetchItem(id) else { return today }
         return ItemActions.defaultUsableUntil(for: item.data, today: today, now: now, calendar: calendar)
     }
 
@@ -298,7 +298,7 @@ final class AppModel {
     /// Opzeggen, from the detail screen or a notification: opens the cancel page and
     /// remembers it, so the app can ask afterwards whether it worked.
     func requestCancel(_ id: UUID) {
-        guard let item = item(id), let url = cancelURL(for: item.data) else { return }
+        guard let item = fetchItem(id), let url = cancelURL(for: item.data) else { return }
         settings.pendingCancel = PendingCancel(itemID: id, openedAt: now)
         cancelOpenedAwaitingBackground = true
         urlToOpen = url
@@ -343,7 +343,7 @@ final class AppModel {
                 requestCancel(itemID)
             }
         case UNNotificationDefaultActionIdentifier:
-            if category == NotificationIdentifiers.decisionCategory, let itemID, item(itemID) != nil {
+            if category == NotificationIdentifiers.decisionCategory, let itemID, fetchItem(itemID) != nil {
                 openDetail(itemID)
             } else {
                 sheet = nil
@@ -364,7 +364,7 @@ final class AppModel {
     /// Deep link `opzegwekker://item/<uuid>`; anything else opens the overview.
     func handle(url: URL) {
         guard url.scheme == "opzegwekker" else { return }
-        if url.host() == "item", let id = UUID(uuidString: url.lastPathComponent), item(id) != nil {
+        if url.host() == "item", let id = UUID(uuidString: url.lastPathComponent), fetchItem(id) != nil {
             openDetail(id)
         } else {
             sheet = nil
@@ -377,7 +377,7 @@ final class AppModel {
     private func askWhetherCancelSucceeded() {
         guard let pending = settings.pendingCancel, !cancelOpenedAwaitingBackground else { return }
         settings.pendingCancel = nil
-        guard now.timeIntervalSince(pending.openedAt) < 30 * 60, let item = item(pending.itemID), item.data.isLive else { return }
+        guard now.timeIntervalSince(pending.openedAt) < 30 * 60, let item = fetchItem(pending.itemID), item.data.isLive else { return }
         sheet = .cancelSucceeded(pending.itemID)
     }
 

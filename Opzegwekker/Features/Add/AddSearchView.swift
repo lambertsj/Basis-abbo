@@ -2,6 +2,9 @@ import SwiftUI
 
 /// Step 1: search the catalog, or add something that is not in it.
 struct AddSearchView: View {
+    /// False while the form is pushed on top; the field gets focus whenever this
+    /// screen is the visible one.
+    let isActive: Bool
     /// Called with the chosen service, or nil and the typed name for a custom item.
     let onPick: (CatalogService?, String) -> Void
 
@@ -26,7 +29,9 @@ struct AddSearchView: View {
         }
         .navigationTitle("Toevoegen")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear { isFocused = true }
+        .onChange(of: isActive, initial: true) { _, active in
+            if active { isFocused = true }
+        }
     }
 
     private var searchField: some View {

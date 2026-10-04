@@ -21,7 +21,7 @@ struct AddFlowView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            AddSearchView { service, name in
+            AddSearchView(isActive: path.isEmpty) { service, name in
                 path.append(.form(serviceID: service?.id, name: name))
             }
             .navigationDestination(for: Step.self) { step in

@@ -9,7 +9,7 @@ extension ServiceCategory {
         case .news: .blue
         case .mealbox: .orange
         case .gym: .purple
-        case .storage: .cyan
+        case .storage: .teal
         case .software: .indigo
         case .audiobooks: .brown
         case .other: .gray

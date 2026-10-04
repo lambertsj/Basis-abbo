@@ -21,7 +21,7 @@ final class SettingsStore {
         static let pendingCancel = "pendingCancel"
     }
 
-    @ObservationIgnored private let defaults: UserDefaults
+    private let defaults: UserDefaults
 
     var reminderHour: Int { didSet { defaults.set(reminderHour, forKey: Key.hour) } }
     var reminderMinute: Int { didSet { defaults.set(reminderMinute, forKey: Key.minute) } }
