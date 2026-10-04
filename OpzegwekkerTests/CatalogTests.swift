@@ -48,7 +48,7 @@ struct CatalogTests {
         let catalog = Catalog.bundled
         #expect(catalog.services.count == raw.count)
         #expect(catalog.popular.count == 8)
-        #expect((35...50).contains(catalog.services.count))
+        #expect((60...90).contains(catalog.services.count))
         let categories = Set(catalog.services.map(\.category))
         #expect(categories == Set(ServiceCategory.allCases).subtracting([.other]))
     }
@@ -68,5 +68,24 @@ struct CatalogTests {
         #expect(catalog.exactMatch("café creme")?.id == "a")
         #expect(catalog.exactMatch("nr") == nil)
         #expect(catalog.search("  ").isEmpty)
+    }
+
+    @Test("Vaste contracten: internet, mobiel, energie en verzekeringen")
+    func fixedContracts() throws {
+        let catalog = Catalog.bundled
+        let today = TestSupport.day("2026-10-04")
+        let now = TestSupport.moment("2026-10-04", 12)
+        #expect(Set(catalog.search("kpn").map(\.id)).isSuperset(of: ["kpn-thuis", "kpn-mobiel"]))
+        #expect(catalog.exactMatch("nuon")?.id == "vattenfall")
+
+        let ziggo = try #require(catalog.service(id: "ziggo"))
+        let draft = ItemDraft(name: "", service: ziggo, today: today)
+        #expect(draft.kind == .subscription)
+        #expect(draft.interval == .fixedEnd)
+        #expect(draft.renewalDate == TestSupport.day("2027-10-04"))
+        let item = draft.build(today: today, now: now, calendar: TestSupport.calendar)
+        #expect(ReminderRules.leads(for: item, settings: TestSupport.settings) == [30, 7])
+        #expect(draft.liveLine(settings: TestSupport.settings, today: today, now: now, calendar: TestSupport.calendar)
+            == "Loopt tot ma 4 okt 2027 · seintje za 4 sep 2027")
     }
 }

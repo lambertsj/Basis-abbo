@@ -1,6 +1,6 @@
 # Catalogus nalopen
 
-`Catalog/services.json` bevat 44 diensten. `trialDays` en `cancelURL` staan bewust overal op `null`; die vul jij in.
+`Catalog/services.json` bevat 73 diensten. `trialDays` en `cancelURL` staan bewust overal op `null`; die vul jij in.
 
 Per dienst na te lopen:
 
@@ -9,6 +9,8 @@ Per dienst na te lopen:
 - **appleBilling**: `true` als je de dienst ook via een Apple-abonnement kunt betalen. Ik heb dit op basis van algemene kennis ingevuld; graag controleren.
 - **defaultKind / defaultInterval**: begint de dienst meestal met een proef, en hoe vaak wordt er betaald? Ook ingevuld op basis van algemene kennis.
 - **domains**: alleen informatief; de app gebruikt ze niet en haalt niets op.
+
+Bij internet en tv, mobiel en energie staat het standaardinterval meestal op `fixedEnd` (contract met einddatum); na de einddatum loopt het in de app maandelijks door. Verzekeringen staan op `year`. Een zorgverzekering kun je alleen per 1 januari overzetten; de gebruiker kiest zelf de datum.
 
 Populair (`popular: true`, precies 8, de chips in de lege staat): Netflix, Videoland, Disney+, HBO Max, Spotify, NRC, HelloFresh, Storytel.
 
@@ -255,3 +257,160 @@ Populair (`popular: true`, precies 8, de chips in de lege staat): Netflix, Video
     - [ ] cancelURL (nu `null`)
     - [ ] appleBilling (nu `false`)
     - [ ] defaultKind `trial`, defaultInterval `month`
+
+## Internet en tv
+
+- [ ] **Ziggo** (`ziggo`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **KPN Internet en tv** (`kpn-thuis`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Odido Thuis** (`odido-thuis`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **DELTA Fiber** (`delta`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Caiway** (`caiway`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+
+## Mobiel
+
+- [ ] **KPN Mobiel** (`kpn-mobiel`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Vodafone** (`vodafone`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Odido Mobiel** (`odido-mobiel`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Simyo** (`simyo`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `month`
+- [ ] **Lebara** (`lebara`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `month`
+- [ ] **Ben** (`ben`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `month`
+- [ ] **Youfone** (`youfone`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `month`
+
+## Energie
+
+- [ ] **Vattenfall** (`vattenfall`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Eneco** (`eneco`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Essent** (`essent`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Greenchoice** (`greenchoice`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Budget Energie** (`budget-energie`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Pure Energie** (`pure-energie`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Energiedirect.nl** (`energiedirect`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+- [ ] **Vandebron** (`vandebron`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `fixedEnd`
+
+## Verzekeringen
+
+- [ ] **Zilveren Kruis** (`zilveren-kruis`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **CZ** (`cz`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **VGZ** (`vgz`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **Menzis** (`menzis`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **Centraal Beheer** (`centraal-beheer`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **Interpolis** (`interpolis`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **ANWB Verzekeringen** (`anwb-verzekeringen`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **FBTO** (`fbto`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`
+- [ ] **Ohra** (`ohra`)
+    - [ ] trialDays (nu `null`)
+    - [ ] cancelURL (nu `null`)
+    - [ ] appleBilling (nu `false`)
+    - [ ] defaultKind `subscription`, defaultInterval `year`

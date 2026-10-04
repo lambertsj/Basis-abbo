@@ -90,7 +90,7 @@ Hier staan de keuzes die niet in de opdracht stonden. Waar de opdracht niets zei
 
 ## Catalogus
 
-49. Er staan 44 diensten in, verdeeld over de acht gevraagde categorieën. `trialDays` en `cancelURL` staan overal op `null`.
+49. Er staan 73 diensten in: de acht gevraagde categorieën, plus op verzoek internet en tv, mobiel, energie en verzekeringen (zie 61). `trialDays` en `cancelURL` staan overal op `null`.
 50. `appleBilling`, `defaultKind`, `defaultInterval` en `domains` heb ik ingevuld op basis van algemene kennis. Ze staan ook in `CATALOG_TODO.md` om na te lopen.
 51. De 8 populaire diensten zijn Netflix, Videoland, Disney+, HBO Max, Spotify, NRC, HelloFresh en Storytel.
 
@@ -115,3 +115,13 @@ De eerste versie gebruikte overal de standaard SwiftUI-template: grijze gegroepe
     - Kaarten zijn verhoogd papier met een haarlijn.
 59. **"nog 5 dagen"** toont het getal groot in serif. "vandaag" en "morgen" staan vet. Bij toegankelijkheidsgroottes is het gewoon tekst. Het blijft altijd tekst en wordt nooit alleen kleur.
 60. **Formulieren en Instellingen** houden de vertrouwde iOS-formulierrijen, op papieren achtergrond.
+
+## Vaste contracten
+
+61. **Vier extra categorieën,** op verzoek toegevoegd na de oorspronkelijke opdracht:
+    - Internet en tv (cyaan): Ziggo, KPN, Odido, DELTA, Caiway.
+    - Mobiel (mint): KPN, Vodafone, Odido, Simyo, Lebara, Ben, Youfone.
+    - Energie (geel): Vattenfall, Eneco, Essent, Greenchoice, Budget Energie, Pure Energie, Energiedirect.nl, Vandebron.
+    - Verzekeringen (roze): Zilveren Kruis, CZ, VGZ, Menzis, Centraal Beheer, Interpolis, ANWB, FBTO, Ohra.
+62. **Standaardsoort.** Internet, mobiel (de grote providers) en energie beginnen als abonnement met vaste einddatum. In het formulier staat dan "Loopt tot" met een jaar vooruit en seintjes 30 en 7 dagen vooraf. Na de einddatum loopt het maandelijks door, met de kaart "loopt nu waarschijnlijk door" (zie 16). Sim-only-aanbieders zonder looptijd (Simyo, Lebara, Ben, Youfone) staan op maand. Verzekeringen staan op jaar.
+63. **Geen populaire chips.** De lege staat vraagt naar een proefperiode, dus de 8 populaire chips blijven proef- en abonnementsdiensten. De nieuwe diensten vind je via zoeken.

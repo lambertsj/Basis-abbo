@@ -12,6 +12,10 @@ extension ServiceCategory {
         case .storage: .teal
         case .software: .indigo
         case .audiobooks: .brown
+        case .internet: .cyan
+        case .mobile: .mint
+        case .energy: .yellow
+        case .insurance: .pink
         case .other: .gray
         }
     }

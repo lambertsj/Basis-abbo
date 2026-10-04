@@ -9,6 +9,10 @@ enum ServiceCategory: String, Codable, CaseIterable, Sendable {
     case storage
     case software
     case audiobooks
+    case internet
+    case mobile
+    case energy
+    case insurance
     /// Items without a catalog entry.
     case other
 }

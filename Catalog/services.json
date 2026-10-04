@@ -746,6 +746,483 @@
       ],
       "appleBilling": false,
       "popular": false
+    },
+    {
+      "id": "ziggo",
+      "name": "Ziggo",
+      "aliases": [
+        "VodafoneZiggo"
+      ],
+      "category": "internet",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "ziggo.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "kpn-thuis",
+      "name": "KPN Internet en tv",
+      "aliases": [
+        "KPN",
+        "KPN Thuis",
+        "KPN internet"
+      ],
+      "category": "internet",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "kpn.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "odido-thuis",
+      "name": "Odido Thuis",
+      "aliases": [
+        "Odido internet",
+        "T-Mobile Thuis"
+      ],
+      "category": "internet",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "odido.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "delta",
+      "name": "DELTA Fiber",
+      "aliases": [
+        "Delta",
+        "DELTA"
+      ],
+      "category": "internet",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "delta.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "caiway",
+      "name": "Caiway",
+      "aliases": [],
+      "category": "internet",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "caiway.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "kpn-mobiel",
+      "name": "KPN Mobiel",
+      "aliases": [
+        "KPN abonnement"
+      ],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "kpn.com"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "vodafone",
+      "name": "Vodafone",
+      "aliases": [
+        "Vodafone Mobiel"
+      ],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "vodafone.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "odido-mobiel",
+      "name": "Odido Mobiel",
+      "aliases": [
+        "Odido",
+        "T-Mobile"
+      ],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "odido.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "simyo",
+      "name": "Simyo",
+      "aliases": [],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "simyo.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "lebara",
+      "name": "Lebara",
+      "aliases": [],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "lebara.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "ben",
+      "name": "Ben",
+      "aliases": [
+        "Ben Mobiel"
+      ],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "ben.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "youfone",
+      "name": "Youfone",
+      "aliases": [],
+      "category": "mobile",
+      "defaultKind": "subscription",
+      "defaultInterval": "month",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "youfone.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "vattenfall",
+      "name": "Vattenfall",
+      "aliases": [
+        "Nuon"
+      ],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "vattenfall.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "eneco",
+      "name": "Eneco",
+      "aliases": [],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "eneco.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "essent",
+      "name": "Essent",
+      "aliases": [],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "essent.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "greenchoice",
+      "name": "Greenchoice",
+      "aliases": [
+        "Green Choice"
+      ],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "greenchoice.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "budget-energie",
+      "name": "Budget Energie",
+      "aliases": [
+        "Budget"
+      ],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "budgetenergie.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "pure-energie",
+      "name": "Pure Energie",
+      "aliases": [],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "pure-energie.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "energiedirect",
+      "name": "Energiedirect.nl",
+      "aliases": [
+        "Energiedirect",
+        "Energie Direct"
+      ],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "energiedirect.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "vandebron",
+      "name": "Vandebron",
+      "aliases": [
+        "Van de Bron"
+      ],
+      "category": "energy",
+      "defaultKind": "subscription",
+      "defaultInterval": "fixedEnd",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "vandebron.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "zilveren-kruis",
+      "name": "Zilveren Kruis",
+      "aliases": [
+        "Zorgverzekering Zilveren Kruis"
+      ],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "zilverenkruis.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "cz",
+      "name": "CZ",
+      "aliases": [
+        "CZ zorgverzekering"
+      ],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "cz.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "vgz",
+      "name": "VGZ",
+      "aliases": [
+        "VGZ zorgverzekering"
+      ],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "vgz.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "menzis",
+      "name": "Menzis",
+      "aliases": [],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "menzis.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "centraal-beheer",
+      "name": "Centraal Beheer",
+      "aliases": [],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "centraalbeheer.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "interpolis",
+      "name": "Interpolis",
+      "aliases": [],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "interpolis.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "anwb-verzekeringen",
+      "name": "ANWB Verzekeringen",
+      "aliases": [
+        "ANWB"
+      ],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "anwb.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "fbto",
+      "name": "FBTO",
+      "aliases": [],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "fbto.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
+    },
+    {
+      "id": "ohra",
+      "name": "Ohra",
+      "aliases": [
+        "OHRA"
+      ],
+      "category": "insurance",
+      "defaultKind": "subscription",
+      "defaultInterval": "year",
+      "trialDays": null,
+      "cancelURL": null,
+      "domains": [
+        "ohra.nl"
+      ],
+      "appleBilling": false,
+      "popular": false
     }
   ]
 }
