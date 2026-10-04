@@ -51,6 +51,8 @@ struct OverviewView: View {
                 }
             }
 
+            cards(data)
+
             ForEach(groups) { entry in
                 Section {
                     if isExpanded(entry.group) {
@@ -133,7 +135,7 @@ struct OverviewView: View {
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             if item.isLive {
                 Button {
-                    model.lightHaptic += 1
+                    model.beginMarkCancelled(item.id)
                 } label: {
                     Label("Opgezegd", systemImage: "checkmark.circle")
                 }
@@ -148,8 +150,35 @@ struct OverviewView: View {
                 Label("Verwijder", systemImage: "trash")
             }
         }
-        .accessibilityAction(named: "Verwijder") {
-            model.delete(item.id)
+        .accessibilityActions {
+            if item.isLive {
+                Button("Opgezegd") { model.beginMarkCancelled(item.id) }
+            }
+            Button("Verwijder") { model.delete(item.id) }
+        }
+    }
+
+    @ViewBuilder
+    private func cards(_ data: [ItemData]) -> some View {
+        let showsDenied = model.notificationStatus == .denied && !model.settings.deniedCardDismissed
+        let unconfirmed = data.filter { $0.needsConfirmation && $0.status == .active }
+        if showsDenied || !unconfirmed.isEmpty {
+            Section {
+                if showsDenied {
+                    NotificationsDeniedCard {
+                        model.openNotificationSettings()
+                    } onDismiss: {
+                        withAnimation { model.settings.deniedCardDismissed = true }
+                    }
+                }
+                ForEach(unconfirmed) { item in
+                    ConfirmationCard(name: item.name) {
+                        withAnimation { model.confirmContinues(item.id) }
+                    } onAlreadyCancelled: {
+                        withAnimation { model.alreadyCancelled(item.id) }
+                    }
+                }
+            }
         }
     }
 }

@@ -25,6 +25,10 @@ final class AppModel {
     enum Sheet: Identifiable, Hashable {
         case settings
         case add(AddStart)
+        /// "Tot wanneer kun je het nog gebruiken?"
+        case markCancelled(UUID)
+        /// "Is opzeggen van … gelukt?"
+        case cancelSucceeded(UUID)
 
         var id: Self { self }
     }
@@ -49,8 +53,15 @@ final class AppModel {
     /// Incremented to trigger haptics from the root view.
     var successHaptic = 0
     var lightHaptic = 0
+    /// Incremented to ask the root view for an App Store review.
+    var reviewRequest = 0
+    /// A link the root view should open in Safari.
+    var urlToOpen: URL?
 
     @ObservationIgnored private var toastTask: Task<Void, Never>?
+    /// Whether the cancel link was opened in this process and the app has not been in
+    /// the background since; then returning to the app is not a return from Safari yet.
+    @ObservationIgnored private var cancelOpenedAwaitingBackground = false
 
     init(container: ModelContainer, catalog: Catalog = .bundled, settings: SettingsStore = SettingsStore()) {
         self.container = container
@@ -171,6 +182,119 @@ final class AppModel {
         guard item(snapshot.id) == nil else { return }
         context.insert(Item(data: snapshot))
         afterChange()
+    }
+
+    // MARK: - Item actions
+
+    /// Opgezegd (swipe): asks until when it can still be used.
+    func beginMarkCancelled(_ id: UUID) {
+        lightHaptic += 1
+        sheet = .markCancelled(id)
+    }
+
+    func defaultUsableUntil(for id: UUID) -> CalendarDay {
+        guard let item = item(id) else { return today }
+        return ItemActions.defaultUsableUntil(for: item.data, today: today, now: now, calendar: calendar)
+    }
+
+    func markCancelled(_ id: UUID, usableUntil: CalendarDay) {
+        mutate(id) { ItemActions.markCancelled(&$0, usableUntil: usableUntil, now: now) }
+        successHaptic += 1
+        if !settings.hasCancelledBefore {
+            settings.hasCancelledBefore = true
+            reviewRequest += 1
+        }
+    }
+
+    /// Houden. Shows briefly when the next reminder comes.
+    func keep(_ id: UUID, showMessage: Bool = true) {
+        var message = ""
+        mutate(id) { message = ItemActions.keep(&$0, today: today, now: now, calendar: calendar) }
+        if showMessage, !message.isEmpty {
+            showToast(message)
+        }
+    }
+
+    /// Morgen opnieuw.
+    func snooze(_ id: UUID) {
+        mutate(id) { ItemActions.snooze(&$0, today: today, now: now, calendar: calendar) }
+    }
+
+    /// Toch niet opgezegd.
+    func undoCancel(_ id: UUID) {
+        mutate(id) { ItemActions.undoCancel(&$0, today: today, now: now) }
+    }
+
+    /// Card: "Klopt".
+    func confirmContinues(_ id: UUID) {
+        mutate(id) { ItemActions.confirmContinues(&$0, now: now) }
+    }
+
+    /// Card: "Ik had al opgezegd".
+    func alreadyCancelled(_ id: UUID) {
+        mutate(id) { ItemActions.alreadyCancelled(&$0, today: today, now: now) }
+    }
+
+    // MARK: - Cancelling
+
+    /// The page the Opzeggen button opens: the cancel link, or a search for it.
+    func cancelURL(for item: ItemData) -> URL? {
+        if let raw = item.cancelURL?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty {
+            let withScheme = raw.contains("://") ? raw : "https://\(raw)"
+            if let url = URL(string: withScheme) { return url }
+        }
+        return searchURL(for: item.name)
+    }
+
+    func searchURL(for name: String) -> URL? {
+        var components = URLComponents(string: "https://duckduckgo.com/")
+        components?.queryItems = [URLQueryItem(name: "q", value: "\(name) opzeggen")]
+        return components?.url
+    }
+
+    /// Opzeggen, from the detail screen or a notification: opens the cancel page and
+    /// remembers it, so the app can ask afterwards whether it worked.
+    func requestCancel(_ id: UUID) {
+        guard let item = item(id), let url = cancelURL(for: item.data) else { return }
+        settings.pendingCancel = PendingCancel(itemID: id, openedAt: now)
+        cancelOpenedAwaitingBackground = true
+        urlToOpen = url
+    }
+
+    /// Opens this app's page in the iOS Settings, where notifications can be turned on.
+    func openNotificationSettings() {
+        urlToOpen = URL(string: UIApplication.openNotificationSettingsURLString)
+    }
+
+    /// "Betaald via Apple?"
+    func openAppleSubscriptions() {
+        urlToOpen = URL(string: "https://apps.apple.com/account/subscriptions")
+    }
+
+    func scenePhaseChanged(_ phase: ScenePhase) {
+        switch phase {
+        case .active:
+            askWhetherCancelSucceeded()
+            Task { await refresh() }
+        case .background:
+            cancelOpenedAwaitingBackground = false
+        default:
+            break
+        }
+    }
+
+    /// Asks "Is opzeggen van … gelukt?" when returning within 30 minutes of opening a
+    /// cancel link. An older one is cleared without asking.
+    private func askWhetherCancelSucceeded() {
+        guard let pending = settings.pendingCancel, !cancelOpenedAwaitingBackground else { return }
+        settings.pendingCancel = nil
+        guard now.timeIntervalSince(pending.openedAt) < 30 * 60, let item = item(pending.itemID), item.data.isLive else { return }
+        sheet = .cancelSucceeded(pending.itemID)
+    }
+
+    /// "Ja, opgezegd": cancelled, usable until the relevant date.
+    func confirmCancelSucceeded(_ id: UUID) {
+        markCancelled(id, usableUntil: defaultUsableUntil(for: id))
     }
 
     // MARK: - Notifications permission
