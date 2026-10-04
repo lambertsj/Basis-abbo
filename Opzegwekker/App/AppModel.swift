@@ -43,6 +43,7 @@ final class AppModel {
     let catalog: Catalog
     private let logger = Logger(subsystem: "Opzegwekker", category: "model")
     let settings: SettingsStore
+    private let scheduler = NotificationScheduler()
 
     var path: [Route] = []
     var sheet: Sheet?
@@ -77,6 +78,7 @@ final class AppModel {
     // MARK: - Lifecycle
 
     func start() async {
+        BackgroundRefresh.schedule()
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("-OpzegwekkerSeed") {
             DebugSeed.populate(context: context, today: today, catalog: catalog)
@@ -87,10 +89,15 @@ final class AppModel {
 
     /// Runs the transitions, saves and updates everything derived from the items.
     func refresh() async {
-        today = CalendarDay(now, calendar: calendar)
-        runTransitions()
+        refreshDay()
         await updateNotificationStatus()
         afterChange()
+    }
+
+    /// Moves `today` along and applies the transitions for it.
+    private func refreshDay() {
+        today = CalendarDay(now, calendar: calendar)
+        runTransitions()
     }
 
     func updateNotificationStatus() async {
@@ -123,13 +130,29 @@ final class AppModel {
         }
     }
 
-    /// Saves and updates everything that depends on the items.
+    /// Saves and updates everything that depends on the items: all notifications are
+    /// replanned and the badge is recalculated.
     func afterChange() {
         do {
             try context.save()
         } catch {
             logger.error("Saving failed: \(error.localizedDescription, privacy: .public)")
         }
+        let data = allItems().map(\.data)
+        let reminderSettings = settings.reminderSettings
+        let planned = NotificationPlanner.plan(
+            items: data,
+            settings: reminderSettings,
+            defaultIntervals: catalog.defaultIntervals,
+            today: today,
+            now: now,
+            calendar: calendar
+        )
+        scheduler.reschedule(planned)
+        let badge = reminderSettings.badgeEnabled
+            ? OverviewRules.decideNowCount(data, today: today, now: now, calendar: calendar)
+            : 0
+        scheduler.setBadge(badge)
     }
 
     /// Applies a pure domain change to one item.
@@ -278,8 +301,54 @@ final class AppModel {
             Task { await refresh() }
         case .background:
             cancelOpenedAwaitingBackground = false
+            BackgroundRefresh.schedule()
         default:
             break
+        }
+    }
+
+    // MARK: - Notification responses
+
+    /// Taps and actions from a notification. Only Opzeggen brings the app forward.
+    func handleNotificationResponse(action: String, category: String, itemID: UUID?) {
+        refreshDay()
+        switch action {
+        case NotificationIdentifiers.keepAction:
+            if let itemID { keep(itemID, showMessage: false) }
+        case NotificationIdentifiers.snoozeAction:
+            if let itemID { snooze(itemID) }
+        case NotificationIdentifiers.cancelAction:
+            if let itemID {
+                openDetail(itemID)
+                requestCancel(itemID)
+            }
+        case UNNotificationDefaultActionIdentifier:
+            if category == NotificationIdentifiers.decisionCategory, let itemID, item(itemID) != nil {
+                openDetail(itemID)
+            } else {
+                sheet = nil
+                path = []
+            }
+        default:
+            break
+        }
+        afterChange()
+    }
+
+    /// Shows the detail of an item on top of the overview.
+    func openDetail(_ id: UUID) {
+        sheet = nil
+        path = [.item(id)]
+    }
+
+    /// Deep link `opzegwekker://item/<uuid>`; anything else opens the overview.
+    func handle(url: URL) {
+        guard url.scheme == "opzegwekker" else { return }
+        if url.host() == "item", let id = UUID(uuidString: url.lastPathComponent), item(id) != nil {
+            openDetail(id)
+        } else {
+            sheet = nil
+            path = []
         }
     }
 

@@ -12,5 +12,8 @@ struct OpzegwekkerApp: App {
                 .environment(\.locale, DutchFormat.locale)
         }
         .modelContainer(AppEnvironment.shared.container)
+        .backgroundTask(.appRefresh(BackgroundRefresh.identifier)) {
+            await BackgroundRefresh.run()
+        }
     }
 }

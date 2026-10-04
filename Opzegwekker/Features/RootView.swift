@@ -40,6 +40,9 @@ struct RootView: View {
         .sensoryFeedback(.success, trigger: model.successHaptic)
         .sensoryFeedback(.impact(weight: .light), trigger: model.lightHaptic)
         .task { await model.start() }
+        .onOpenURL { url in
+            model.handle(url: url)
+        }
         .onChange(of: scenePhase) { _, phase in
             model.scenePhaseChanged(phase)
         }
