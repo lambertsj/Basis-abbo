@@ -47,6 +47,10 @@ struct ItemDetailView: View {
         }
     }
 
+    /// Rows without horizontal inset sit under the rounded corners of their grouped section,
+    /// which clip anything within about this distance of a corner.
+    private let sectionCornerClearance: CGFloat = 20
+
     private func content(_ item: ItemData) -> some View {
         let today = model.today
         let texts = DetailTexts(item: item, today: today, now: model.now, calendar: model.calendar)
@@ -56,13 +60,13 @@ struct ItemDetailView: View {
             Section {
                 header(item, texts: texts, category: service?.category ?? .other)
                     .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    .listRowInsets(EdgeInsets(top: sectionCornerClearance, leading: 0, bottom: sectionCornerClearance, trailing: 0))
             }
 
             Section {
                 actions(item, appleBilling: service?.appleBilling ?? false)
                     .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
+                    .listRowInsets(EdgeInsets(top: sectionCornerClearance, leading: 0, bottom: sectionCornerClearance, trailing: 0))
             }
 
             Section {

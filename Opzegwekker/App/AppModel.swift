@@ -86,7 +86,30 @@ final class AppModel {
         }
         #endif
         await refresh()
+        #if DEBUG
+        openDebugScreen()
+        #endif
     }
+
+    #if DEBUG
+    /// For App Store screenshots: `-OpzegwekkerOpen detail:<naam>`, `settings` or `add`.
+    private func openDebugScreen() {
+        let args = ProcessInfo.processInfo.arguments
+        guard let i = args.firstIndex(of: "-OpzegwekkerOpen"), i + 1 < args.count else { return }
+        let target = args[i + 1]
+        if target == "settings" {
+            sheet = .settings
+        } else if target == "add" {
+            sheet = .add(.search)
+        } else if target.hasPrefix("detail:") {
+            let name = String(target.dropFirst("detail:".count))
+            let items = (try? context.fetch(FetchDescriptor<Item>())) ?? []
+            if let item = items.first(where: { $0.data.name == name }) {
+                openDetail(item.data.id)
+            }
+        }
+    }
+    #endif
 
     /// Runs the transitions, saves and updates everything derived from the items.
     func refresh() async {

@@ -10,6 +10,7 @@ settings:
     APP_BUNDLE_ID: nl.basisapps.opzegwekker
     SWIFT_VERSION: "5.0"
     IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: NO
 targets:
   Opzegwekker:
     type: application
