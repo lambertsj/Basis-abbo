@@ -130,3 +130,17 @@ De eerste versie gebruikte overal de standaard SwiftUI-template: grijze gegroepe
 
 64. **Geen onboarding.** De iOS-vraag komt een halve seconde na het bewaren van het eerste item, zoals de opdracht zegt. Dan is duidelijk waarom de app meldingen wil, en iOS laat die vraag maar één keer stellen.
 65. **De toast bij het eerste item noemt het seintje:** "Toegevoegd · seintje do 29 okt" (of "vandaag" / "morgen"), zodat de iOS-vraag daarna vanzelf logisch is. Zonder seintje (maand of week) of als meldingen al geweigerd zijn, blijft het "Toegevoegd". Bij latere toevoegingen staat er gewoon "Toegevoegd", zoals in de opdracht.
+
+## Logo
+
+66. **Een doorbroken kringloop.** Het logo is een wijzerplaat waarvan de ring rechtsboven onderbroken is. In die opening staat een stip, en de wijzer wijst er precies naartoe.
+    - De ring is het abonnement dat zich steeds verlengt.
+    - De opening is het moment waarop je die kringloop kunt doorbreken.
+    - De stip is het seintje.
+
+    Het blijft een wekker zonder bellen of pootjes, en het leest nog goed op 29 px (Instellingen, Spotlight).
+67. **Twee kleuren:** oranje `#F26B1D` en papierwit `#F6F3EE`, hetzelfde papier als de app.
+    - Het app-icoon is oranje met papierwit: dat valt op tussen andere apps.
+    - Voor andere plekken staan er ook versies in inkt op oranje en inkt op papier, in `Design/`.
+
+    De SVG's zijn de bron. `AppIcon.png` (1024 × 1024, zonder alfakanaal) is daaruit gerenderd.

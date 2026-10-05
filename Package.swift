@@ -19,6 +19,7 @@ let package = Package(
                 "OpzegwekkerWidget",
                 "OpzegwekkerTests",
                 "Config",
+                "Design",
                 "CATALOG_TODO.md",
                 "DECISIONS.md",
                 "README.md",
