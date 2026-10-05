@@ -37,5 +37,6 @@ De domeinlaag is pure Swift zonder SwiftUI of UserNotifications. De tests (Swift
 | `OpzegwekkerTests/` | tests |
 | `Config/` | Info.plists en entitlements |
 | `Design/` | logo als SVG (bron van het app-icoon) |
+| `AppStore/` | reviewnotities, App Store-teksten, privacybeleid en testlijst voor de eerste build |
 
 Zie `DECISIONS.md` voor alle keuzes die niet in de opdracht stonden, en `CATALOG_TODO.md` voor de catalogusvelden die nog nagelopen moeten worden.

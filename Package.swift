@@ -15,6 +15,7 @@ let package = Package(
             name: "OpzegwekkerCore",
             path: ".",
             exclude: [
+                "AppStore",
                 "Opzegwekker",
                 "OpzegwekkerWidget",
                 "OpzegwekkerTests",
