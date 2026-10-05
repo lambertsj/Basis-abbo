@@ -74,6 +74,16 @@ enum ReminderRules {
         return nil
     }
 
+    /// The toast after saving the first item: "Toegevoegd · seintje do 1 okt", so the
+    /// notification permission question that follows has an obvious reason. Plain
+    /// "Toegevoegd" when the item gets no reminder.
+    static func addedMessage(for item: ItemData, settings: ReminderSettings, today: CalendarDay, now: Date, calendar: Calendar) -> String {
+        guard let first = reminders(for: item, settings: settings, today: today, now: now, calendar: calendar).first else {
+            return "Toegevoegd"
+        }
+        return "Toegevoegd · seintje \(DutchFormat.relativeShort(first.day, today: today))"
+    }
+
     /// The reminders for one item, after shifting past moments, snoozing and merging
     /// reminders that fall on the same day.
     static func reminders(for item: ItemData, settings: ReminderSettings, today: CalendarDay, now: Date, calendar: Calendar) -> [Reminder] {

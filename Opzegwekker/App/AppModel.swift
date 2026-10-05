@@ -199,7 +199,12 @@ final class AppModel {
         settings.deniedCardDismissed = false
         afterChange()
         successHaptic += 1
-        showToast("Toegevoegd") { [weak self] in
+        // The first item says when its reminder comes; the permission question follows.
+        // Not when notifications are off: then no reminder will come.
+        let message = isFirst && notificationStatus != .denied
+            ? ReminderRules.addedMessage(for: data, settings: settings.reminderSettings, today: today, now: now, calendar: calendar)
+            : "Toegevoegd"
+        showToast(message) { [weak self] in
             self?.delete(data.id, showUndo: false)
         }
         if isFirst {

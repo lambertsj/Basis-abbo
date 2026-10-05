@@ -362,6 +362,35 @@ struct DraftTests {
     }
 }
 
+@Suite("Eerste toevoeging")
+struct AddedMessageTests {
+    let calendar = TestSupport.calendar
+    let settings = TestSupport.settings
+    let today = TestSupport.day("2026-10-04")
+    let now = TestSupport.moment("2026-10-04", 12)
+
+    @Test func toastNamesFirstReminder() {
+        // Trial ending 2026-10-31: first reminder two days before.
+        let trial = TestSupport.trial(end: "2026-10-31")
+        #expect(ReminderRules.addedMessage(for: trial, settings: settings, today: today, now: now, calendar: calendar)
+            == "Toegevoegd · seintje do 29 okt")
+
+        // Decision in two days: lead 2 falls today at 09:00, which has passed, so tomorrow.
+        let soon = TestSupport.trial(end: "2026-10-06")
+        #expect(ReminderRules.addedMessage(for: soon, settings: settings, today: today, now: now, calendar: calendar)
+            == "Toegevoegd · seintje morgen")
+
+        let early = TestSupport.trial(end: "2026-10-06")
+        #expect(ReminderRules.addedMessage(for: early, settings: settings, today: today, now: TestSupport.moment("2026-10-04", 8), calendar: calendar)
+            == "Toegevoegd · seintje vandaag")
+    }
+
+    @Test func toastWithoutReminder() {
+        let monthly = TestSupport.subscription(anchor: "2026-11-01", interval: .month)
+        #expect(ReminderRules.addedMessage(for: monthly, settings: settings, today: today, now: now, calendar: calendar) == "Toegevoegd")
+    }
+}
+
 @Suite("CSV")
 struct CSVTests {
     @Test func export() {

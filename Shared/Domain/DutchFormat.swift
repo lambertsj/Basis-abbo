@@ -59,6 +59,15 @@ enum DutchFormat {
         }
     }
 
+    /// "vandaag", "morgen", else "do 1 okt" (with the year when it differs).
+    static func relativeShort(_ day: CalendarDay, today: CalendarDay) -> String {
+        switch today.days(until: day) {
+        case 0: "vandaag"
+        case 1: "morgen"
+        default: short(day, today: today)
+        }
+    }
+
     /// "vandaag", "morgen", "nog 3 dagen"; "voorbij" for a past day.
     static func remainingDays(_ days: Int) -> String {
         switch days {

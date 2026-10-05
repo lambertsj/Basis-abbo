@@ -125,3 +125,8 @@ De eerste versie gebruikte overal de standaard SwiftUI-template: grijze gegroepe
     - Verzekeringen (roze): Zilveren Kruis, CZ, VGZ, Menzis, Centraal Beheer, Interpolis, ANWB, FBTO, Ohra.
 62. **Standaardsoort.** Internet, mobiel (de grote providers) en energie beginnen als abonnement met vaste einddatum. In het formulier staat dan "Loopt tot" met een jaar vooruit en seintjes 30 en 7 dagen vooraf. Na de einddatum loopt het maandelijks door, met de kaart "loopt nu waarschijnlijk door" (zie 16). Sim-only-aanbieders zonder looptijd (Simyo, Lebara, Ben, Youfone) staan op maand. Verzekeringen staan op jaar.
 63. **Geen populaire chips.** De lege staat vraagt naar een proefperiode, dus de 8 populaire chips blijven proef- en abonnementsdiensten. De nieuwe diensten vind je via zoeken.
+
+## Toestemming voor meldingen
+
+64. **Geen onboarding.** De iOS-vraag komt een halve seconde na het bewaren van het eerste item, zoals de opdracht zegt. Dan is duidelijk waarom de app meldingen wil, en iOS laat die vraag maar één keer stellen.
+65. **De toast bij het eerste item noemt het seintje:** "Toegevoegd · seintje do 29 okt" (of "vandaag" / "morgen"), zodat de iOS-vraag daarna vanzelf logisch is. Zonder seintje (maand of week) of als meldingen al geweigerd zijn, blijft het "Toegevoegd". Bij latere toevoegingen staat er gewoon "Toegevoegd", zoals in de opdracht.
