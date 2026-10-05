@@ -64,9 +64,9 @@ Eerste versie.
 | Beschikbaarheid | Nederland, België (de app is alleen in het Nederlands) |
 | Leeftijdsclassificatie | 4+ (vragenlijst: overal "Geen"; onbeperkte webtoegang: nee, links openen in Safari) |
 | Privacy-labels | "Gegevens worden niet verzameld" |
-| Privacybeleid-URL | de pagina met `privacybeleid.md`, bijv. `https://basisapps.nl/opzegwekker/privacy` |
-| Support-URL | `https://basisapps.nl` (moet live zijn) |
-| Copyright | 2026 [naam] |
+| Privacybeleid-URL | `https://jerlam.dev/opzegwekker/privacy-policy` (inhoud: `privacybeleid.md`) |
+| Support-URL | `https://jerlam.dev/opzegwekker` |
+| Copyright | 2026 Jeroen Lamberts |
 | Inlog voor review | Niet nodig (zie `review-notes.md`) |
 | Exportcontrole | Geen versleuteling buiten iOS (`ITSAppUsesNonExemptEncryption = NO` staat al in het project) |
 

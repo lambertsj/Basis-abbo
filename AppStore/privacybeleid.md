@@ -1,16 +1,18 @@
 # Privacybeleid Opzegwekker
 
-> **Voor publicatie:** zet deze tekst op een openbare pagina, bijvoorbeeld `basisapps.nl/opzegwekker/privacy`, en vul die URL in bij App Store Connect onder *Privacybeleid-URL*. Vul eerst de drie velden tussen `[ ]` in. Haal dit blok weg voordat je publiceert.
+*Laatst bijgewerkt: 5 oktober 2026*
 
-*Laatst bijgewerkt: [datum]*
+Opzegwekker is een app van Jeroen Lamberts, uitgegeven binnen BasisApps. **De app verzamelt geen gegevens over jou.**
 
-Opzegwekker is een app van [naam ontwikkelaar of organisatie] binnen BasisApps. De app verzamelt geen gegevens over jou.
+*In short (English): Opzegwekker collects no data. Everything you enter stays on your iPhone. There is no account, no tracking, no advertising and no analytics, and the app makes no network connections of its own.*
 
 ## Wat de app bewaart
 
 Wat je invoert, zoals de naam van een dienst, datums, een prijs, een opzeglink of een notitie, wordt alleen op je eigen iPhone bewaard. Er is geen account en er gaat niets naar ons of naar anderen. De app maakt zelf geen verbinding met internet.
 
 Je instellingen, zoals het tijdstip van je seintjes, staan ook alleen op je iPhone.
+
+De widget op je beginscherm leest dezelfde gegevens van je iPhone. Ook de widget stuurt niets door.
 
 ## Wat de app niet doet
 
@@ -44,10 +46,18 @@ Heb je in iOS ingesteld dat je analysegegevens met ontwikkelaars wilt delen, dan
 
 Kies in de app *Instellingen → Alles wissen*, of verwijder de app. Je gegevens verdwijnen dan van je iPhone. Wij hebben ze niet, dus hoeven we niets te verwijderen.
 
+## Kinderen
+
+De app vraagt niets van je en verzamelt niets, ook niet van kinderen.
+
+## Wijzigingen
+
+Verandert er iets aan hoe de app met gegevens omgaat, dan passen we dit beleid aan en wijzigen we de datum bovenaan. Een nieuwe versie van de app die gegevens zou gaan verzamelen, komt er niet zonder dat dit hier en in de App Store-privacylabels staat.
+
 ## Broncode
 
 De broncode van Opzegwekker is openbaar, zodat iedereen kan controleren wat de app doet: https://github.com/lambertsj/Basis-abbo
 
 ## Contact
 
-Vragen over privacy? Mail naar [e-mailadres].
+Vragen over privacy? Neem contact op via https://jerlam.dev/opzegwekker.
