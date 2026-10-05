@@ -144,6 +144,7 @@ De eerste versie gebruikte overal de standaard SwiftUI-template: grijze gegroepe
     - Voor andere plekken staan er ook versies in inkt op oranje en inkt op papier, in `Design/`.
 
     De SVG's zijn de bron. `AppIcon.png` (1024 × 1024, zonder alfakanaal) is daaruit gerenderd.
-68. **Groen BasisApps-stipje.** Op verzoek is de stip in de opening van de ring (het seintje) het groene stipje van BasisApps geworden. Het heeft een randje in de kleur van het merkteken, omdat groen en oranje ongeveer even licht zijn en het stipje anders wegvalt. Het logo heeft daardoor drie kleuren.
-    - Het groen is nog een **tijdelijke waarde (`#22B573`)**: basisapps.nl was vanuit de bouwomgeving niet bereikbaar.
-    - Pas `BASISAPPS_GREEN` aan in `Design/render_logo.py` en draai dat script; het maakt de drie SVG's in `Design/` opnieuw. Render daarna `Design/logo.svg` naar `AppIcon.png` (1024 × 1024, zonder alfakanaal).
+68. **Groen BasisApps-stipje.** De stip in de opening van de ring (het seintje) is het groene stipje van BasisApps.
+    - Kleur `#3B7A45`, afgelezen van het stipje naast "BasisApps" op basisapps.nl (uit een screenshot, dus binnen een paar tinten nauwkeurig).
+    - Het stipje heeft een randje in de kleur van het merkteken, zodat het ook op oranje goed zichtbaar blijft. Het logo heeft daardoor drie kleuren.
+    - Andere kleur nodig? Pas `BASISAPPS_GREEN` aan in `Design/render_logo.py` en draai dat script. Render daarna `Design/logo.svg` naar `AppIcon.png` (1024 × 1024, zonder alfakanaal).

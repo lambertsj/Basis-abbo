@@ -11,7 +11,7 @@ import pathlib
 ORANGE = "#F26B1D"
 PAPER = "#F6F3EE"
 INK = "#1B1A18"
-BASISAPPS_GREEN = "#22B573"  # placeholder: replace with the exact BasisApps green
+BASISAPPS_GREEN = "#3B7A45"  # the dot next to "BasisApps" on basisapps.nl
 
 CX, CY, R = 512, 532, 300
 GAP_START, GAP_END, DOT_ANGLE = 22, 68, 45  # degrees clockwise from 12 o'clock
